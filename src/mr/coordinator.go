@@ -1,7 +1,6 @@
 package mr
 
 import (
-	"fmt"
 	"log"
 	"net"
 	"net/http"
@@ -120,10 +119,10 @@ func (c *Coordinator) server() {
 func (c *Coordinator) Done() bool {
 	c.mu.Lock()
 	ret := len(c.InProgress) == 0 && len(c.Idle) == 0
-	fmt.Printf("%d jobs are in progress, %d jobs are idle\n", len(c.InProgress), len(c.Idle))
+	//fmt.Printf("%d jobs are in progress, %d jobs are idle\n", len(c.InProgress), len(c.Idle))
 	c.mu.Unlock()
 	if ret {
-		time.Sleep(time.Second)
+		time.Sleep(time.Second * 3)
 	}
 	return ret
 }

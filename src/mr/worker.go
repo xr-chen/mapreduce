@@ -171,8 +171,6 @@ func ReduceWorker(reducef func(string, []string) string, job *Job) {
 	ofile.Close()
 	_, err := os.Stat(oname)
 	if os.IsNotExist(err) {
-		fmt.Println(ofile.Name())
-		fmt.Println(oname)
 		os.Rename(ofile.Name(), oname)
 	}
 	ReduceDone(job)
